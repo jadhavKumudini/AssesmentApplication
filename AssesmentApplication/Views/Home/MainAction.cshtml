@@ -1,0 +1,96 @@
+﻿@model AssesmentApplication.Models.ViewModel.ReportViewModel
+
+@{
+    ViewBag.Title = "MainAction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jqury-3.2.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
+
+<h2>Welcome To HomePage</h2>
+@using (Html.BeginForm("ReportGenerate", "Home"))
+{
+    <div>
+        <div>
+            <button type="button" class="btn btn-default" id="AgeInputBtn">Get Report Based On Group </button>
+            <button type="button" class="btn btn-default" id="StatesBtn">Get Report Based On Multiple State</button>
+            <button type="button" class="btn btn-default" id="CombinationBtn">Get Report Based On Both</button>
+        </div>
+    </div>
+
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+        <script type="text/javascript">
+            $(document).ready(function () {         
+                $("#AgeInputBtn").click(function () {
+                    $("#MultipleState").hide();
+                    $("#AgeGroup").show();
+                    $('#submitBtn').show();
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#StatesBtn").click(function () {
+                            $("#AgeGroup").hide();
+                            $("#MultipleState").show();
+                            $('#submitBtn').show();
+                        });
+                    });
+        </script>
+        <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#CombinationBtn").click(function () {
+                            $("#AgeGroup").show();
+                            $("#MultipleState").show();
+                            $('#submitBtn').show();
+                        });
+                    });
+        </script>
+        }
+    <br/>
+    <br/>
+   
+    <div id="AgeGroup" style="display:none;">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Age Group</th>
+                    <th>Lower Limit Age</th>
+                    <th>Upper Limit Age</th>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.AgeGroup1) &nbsp;</td>
+                    <td>@Html.TextBoxFor(model => model.AgeGroup1[0])</td>
+                    <td>@Html.TextBoxFor(model => model.AgeGroup1[1])</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.AgeGroup2) &nbsp;</td>
+                    <td>@Html.TextBoxFor(model => model.AgeGroup2[0])</td>
+                    <td>@Html.TextBoxFor(model => model.AgeGroup2[1])</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.AgeGroup3) &nbsp;</td>
+                    <td>@Html.TextBoxFor(model => model.AgeGroup3[0])</td>
+                    <td>@Html.TextBoxFor(model => model.AgeGroup3[1])</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <br/>
+    <div id="MultipleState" style="display:none;">
+        <div>@Html.LabelFor(model => model.ListOfStatesToShow) &nbsp; @Html.DropDownListFor(model => model.selectedSingleState, new SelectList(Model.ListOfStatesToShow), new { @class = "form-control selectpicker" })</div>
+    </div>
+
+    
+    <br />
+    <br />
+    <br />
+    <div id="submitBtn" style="display:none;">
+        <button type="button" name="Action" value="GenerateReport" class="btn btn-default" id="generateReport" onclick="window.location = ('@Url.Action("","")')">Generate Report</button>
+        <button type="button" name="Action" value="Clear" class="btn btn-default" id="generateReport" onclick="window.location = ('@Url.Action("","")')">Clear</button>
+    </div>
+}

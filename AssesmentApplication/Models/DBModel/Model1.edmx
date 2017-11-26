@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Table1">
+          <Key>
+            <PropertyRef Name="DuesMembSSN" />
+          </Key>
+          <Property Name="DuesMembSSN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DuesMembTempPensionNo" Type="varchar(max)" />
+          <Property Name="DuesMembPermPensionNo" Type="varchar(max)" />
+          <Property Name="DuesMembStartDate" Type="varchar(max)" />
+          <Property Name="DuesMembBillStatus" Type="varchar(max)" />
+          <Property Name="DuesMembEndDate" Type="varchar(max)" />
+          <Property Name="DuesMembLastName" Type="varchar(max)" />
+          <Property Name="DuesMembFirstName" Type="varchar(max)" />
+          <Property Name="DuesMembAddress1" Type="varchar(max)" />
+          <Property Name="DuesMembAddress2" Type="varchar(max)" />
+          <Property Name="DuesMembCity" Type="varchar(max)" />
+          <Property Name="DuesMembState" Type="varchar(max)" />
+          <Property Name="DuesMembZipCode" Type="varchar(max)" />
+          <Property Name="DuesMembPhone" Type="varchar(max)" />
+          <Property Name="DuesMembEmailAddress" Type="varchar(max)" />
+          <Property Name="DuesMembDateEntered" Type="varchar(max)" />
+          <Property Name="DuesMembBirthDate" Type="varchar(max)" />
+          <Property Name="DuesMembRetirementDate" Type="varchar(max)" />
+          <Property Name="DuesMembBenefitDate" Type="varchar(max)" />
+          <Property Name="DuesMembDeathDate" Type="varchar(max)" />
+          <Property Name="DuesMembSpouseLastName" Type="varchar(max)" />
+          <Property Name="DuesMembSpouseFirstName" Type="varchar(max)" />
+          <Property Name="DuesMembMarriageDate" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="Table1" EntityType="Self.Table1" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Table1">
+          <Key>
+            <PropertyRef Name="DuesMembSSN" />
+          </Key>
+          <Property Name="DuesMembSSN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DuesMembTempPensionNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembPermPensionNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembStartDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembBillStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembEndDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembLastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembFirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembAddress1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembAddress2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembState" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembZipCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembEmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembDateEntered" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembBirthDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembRetirementDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembBenefitDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembDeathDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembSpouseLastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembSpouseFirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DuesMembMarriageDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Table1" EntityType="Self.Table1" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+          <EntitySetMapping Name="Table1">
+            <EntityTypeMapping TypeName="masterModel.Table1">
+              <MappingFragment StoreEntitySet="Table1">
+                <ScalarProperty Name="DuesMembSSN" ColumnName="DuesMembSSN" />
+                <ScalarProperty Name="DuesMembTempPensionNo" ColumnName="DuesMembTempPensionNo" />
+                <ScalarProperty Name="DuesMembPermPensionNo" ColumnName="DuesMembPermPensionNo" />
+                <ScalarProperty Name="DuesMembStartDate" ColumnName="DuesMembStartDate" />
+                <ScalarProperty Name="DuesMembBillStatus" ColumnName="DuesMembBillStatus" />
+                <ScalarProperty Name="DuesMembEndDate" ColumnName="DuesMembEndDate" />
+                <ScalarProperty Name="DuesMembLastName" ColumnName="DuesMembLastName" />
+                <ScalarProperty Name="DuesMembFirstName" ColumnName="DuesMembFirstName" />
+                <ScalarProperty Name="DuesMembAddress1" ColumnName="DuesMembAddress1" />
+                <ScalarProperty Name="DuesMembAddress2" ColumnName="DuesMembAddress2" />
+                <ScalarProperty Name="DuesMembCity" ColumnName="DuesMembCity" />
+                <ScalarProperty Name="DuesMembState" ColumnName="DuesMembState" />
+                <ScalarProperty Name="DuesMembZipCode" ColumnName="DuesMembZipCode" />
+                <ScalarProperty Name="DuesMembPhone" ColumnName="DuesMembPhone" />
+                <ScalarProperty Name="DuesMembEmailAddress" ColumnName="DuesMembEmailAddress" />
+                <ScalarProperty Name="DuesMembDateEntered" ColumnName="DuesMembDateEntered" />
+                <ScalarProperty Name="DuesMembBirthDate" ColumnName="DuesMembBirthDate" />
+                <ScalarProperty Name="DuesMembRetirementDate" ColumnName="DuesMembRetirementDate" />
+                <ScalarProperty Name="DuesMembBenefitDate" ColumnName="DuesMembBenefitDate" />
+                <ScalarProperty Name="DuesMembDeathDate" ColumnName="DuesMembDeathDate" />
+                <ScalarProperty Name="DuesMembSpouseLastName" ColumnName="DuesMembSpouseLastName" />
+                <ScalarProperty Name="DuesMembSpouseFirstName" ColumnName="DuesMembSpouseFirstName" />
+                <ScalarProperty Name="DuesMembMarriageDate" ColumnName="DuesMembMarriageDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

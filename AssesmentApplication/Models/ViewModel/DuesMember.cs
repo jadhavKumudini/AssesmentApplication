@@ -36,6 +36,7 @@ namespace AssesmentApplication.Models.ViewModel
         public string MailingAddress { get; set; }
         public string Age { get; set; }
 
+        public DuesMember() { }
         public DuesMember(string duesMemberSSN, string duesMemberTempPensionNo, string duesMemberPermPensionNo, string duesMemberStartDate, string duesMemberBillStatus, string duesMemberEndDate, string duesMemberLastName, string duesMemberFirstName, string duesMemberAddress1, string duesMemberAddress2, string duesMemberCity, string duesMemberState, string duesMemberZipCode, string duesMemberPhone, string duesMemberEmailAddress, string duesMemberDateEntered, string duesMemberBirthDate, string duesMemberRetirementDate, string duesMemberBenefitDate, string duesMemberDeathDate, string duesMemberSpouseLastName, string duesMemberSpouseFirstName, string duesMemberMarriageDate)
         {
             DuesMemberSSN = duesMemberSSN;
@@ -85,9 +86,29 @@ namespace AssesmentApplication.Models.ViewModel
             Age = age;
         }
 
-        public string getMailingAddressDuesMember(string address1, string city, string state, string zip)
+        public string getMailingAddressDuesMember(string address1, string address2, string city, string state, string zip)
         {
-            return (address1 + " " + city + ", " + state + "," + zip);
+            if(address1 != null)
+            {
+                address1 = address1.Trim();
+            }
+            if (address2 != null)
+            {
+                address2 = address2.Trim();
+            }
+            if (city != null)
+            {
+                city = city.Trim();
+            }
+            if (state != null)
+            {
+                state = state.Trim();
+            }
+            if (zip != null)
+            {
+                zip = zip.Trim();
+            }
+            return (address1 + ", " +address2 +", "+ city + ", " + state + ", " + zip);
         }
 
         public string getAge(string birthDate)
@@ -96,6 +117,13 @@ namespace AssesmentApplication.Models.ViewModel
             int dob = int.Parse(birthDate);
             int age = (now - dob) / 10000;
             return age.ToString();
+        }
+
+        public string getBirthYear(int age)
+        {
+            int yearNow = int.Parse(DateTime.Now.ToString("yyyy"));
+            int birthyear = yearNow - age;
+            return birthyear.ToString();
         }
         
     }

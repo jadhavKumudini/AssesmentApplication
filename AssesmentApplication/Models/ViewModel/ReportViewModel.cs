@@ -24,7 +24,10 @@ namespace AssesmentApplication.Models.ViewModel
         public List<string> AgeGroup2 { get; set; }
         [Display(Name = "Enter Lower and higher limits for Age Group3")]
         public List<string> AgeGroup3 { get; set; }
-
+        public string labelForGroup1Ages { get; set; }
+        public string labelForGroup2Ages { get; set; }
+        public string labelForGroup3Ages { get; set; } 
+        public string labelForStatesData { get; set; }
         public string selectedSingleState { get; set; }
 
     }

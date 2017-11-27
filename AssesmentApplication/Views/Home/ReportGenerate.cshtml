@@ -4,6 +4,188 @@
     ViewBag.Title = "ReportGenerate";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/jqury-3.2.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
-<h2>ReportGenerate</h2>
+<h2>Generated Report</h2>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $("#ageGroup1").click(function () {
+                    $("#ageGroup1Data").toggle();
+                    $("#ageGroup2Data").hide();
+                    $('#ageGroup3Data').hide();
+                });
+            });
+    </script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $("#ageGroup2").click(function () {
+                    $("#ageGroup1Data").hide();
+                    $("#ageGroup2Data").toggle();
+                    $('#ageGroup3Data').hide();
+                        });
+                    });
+    </script>
+    <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#ageGroup3").click(function () {
+                            $("#ageGroup1Data").hide();
+                            $("#ageGroup2Data").hide();
+                            $('#ageGroup3Data').toggle();
+                        });
+                    });
+    </script>
+<script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#stateReportBtn").click(function () {                          
+                            $('#MultipleStateData').toggle();
+                        });
+                    });
+</script>
+}
 
+<div id="StatesReport">
+@if (Model.labelForStatesData !=null)
+{
+    <h3>@Model.labelForStatesData</h3>
+    <button type="button" class="btn btn-default" id="stateReportBtn">Show</button>
+
+}
+    <div id="MultipleStateData" class="form-group" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; display:none;">
+        <table id="cphMainContent_dgvUsers" class="table table-hover table-striped"
+               cellspacing="0" style="border-collapse:collapse;">
+            <tbody>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Mailing Address</th>
+                    <th scope="col">Email Address</th>
+                </tr>
+                @if (Model.ListDuesMemberOfMultipleCity != null)
+            {
+                for (int i = 0; i < Model.ListDuesMemberOfMultipleCity.Count(); i++)
+                {
+                        <tr class="cursor-pointer">
+                            <td>@Model.ListDuesMemberOfMultipleCity[i].DuesMemberFirstName</td>
+                            <td>@Model.ListDuesMemberOfMultipleCity[i].DuesMemberLastName</td>
+                            <td>@Model.ListDuesMemberOfMultipleCity[i].MailingAddress</td>
+                            <td>@Model.ListDuesMemberOfMultipleCity[i].DuesMemberEmailAddress</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <br/>
+</div>
+
+<!-- Report for Ages -->
+<div id="AgeReport" >
+    @if (Model.labelForGroup1Ages != null)
+    {
+      <h3>@Model.labelForGroup1Ages</h3>
+      <button type="button" class="btn btn-default" id="ageGroup1">Show</button>
+
+    }
+<div id="ageGroup1Data"class="form-group" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; display:none;">
+   <table id="cphMainContent_dgvUsers" class="table table-hover table-striped"
+           cellspacing="0" style="border-collapse:collapse;">
+        <tbody>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Mailing Address</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Age</th>
+            </tr>
+            @if (Model.ListDuesMemberOfGroup1 != null)
+            {
+                for (int i = 0; i < Model.ListDuesMemberOfGroup1.Count(); i++)
+                {
+
+                    <tr class="cursor-pointer">
+                        <td>@Model.ListDuesMemberOfGroup1[i].DuesMemberFirstName</td>
+                        <td>@Model.ListDuesMemberOfGroup1[i].DuesMemberLastName</td>
+                        <td>@Model.ListDuesMemberOfGroup1[i].MailingAddress</td>
+                        <td>@Model.ListDuesMemberOfGroup1[i].DuesMemberEmailAddress</td>
+                        <td>@Model.ListDuesMemberOfGroup1[i].Age</td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+    <br />
+</div>
+@if (Model.labelForGroup2Ages != null)
+{
+<h3>@Model.labelForGroup2Ages</h3>
+<button type="button" class="btn btn-default" id="ageGroup2">Show</button>
+}
+<div id="ageGroup2Data"class="form-group" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;display:none;">
+    <table id="cphMainContent_dgvUsers" class="table table-hover table-striped"
+           cellspacing="0" style="border-collapse:collapse;">
+        <tbody>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Mailing Address</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Age</th>
+            </tr>
+            @if (Model.ListDuesMemberOfGroup2 != null)
+            {
+                for (int i = 0; i < Model.ListDuesMemberOfGroup2.Count(); i++)
+                {
+
+                    <tr class="cursor-pointer">
+                        <td>@Model.ListDuesMemberOfGroup2[i].DuesMemberFirstName</td>
+                        <td>@Model.ListDuesMemberOfGroup2[i].DuesMemberLastName</td>
+                        <td>@Model.ListDuesMemberOfGroup2[i].MailingAddress</td>
+                        <td>@Model.ListDuesMemberOfGroup2[i].DuesMemberEmailAddress</td>
+                        <td>@Model.ListDuesMemberOfGroup2[i].Age</td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+    <br />
+</div>
+@if (Model.labelForGroup3Ages != null)
+{
+<h3>@Model.labelForGroup3Ages</h3>
+<button type="button" class="btn btn-default" id="ageGroup3">Show</button>
+}
+<div id="ageGroup3Data" class="form-group" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;display:none;">
+    <table id="cphMainContent_dgvUsers" class="table table-hover table-striped"
+           cellspacing="0" style="border-collapse:collapse;">
+        <tbody>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Mailing Address</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Age</th>
+            </tr>
+            @if (Model.ListDuesMemberOfGroup3 != null)
+            {
+                for (int i = 0; i < Model.ListDuesMemberOfGroup3.Count(); i++)
+                {
+
+                    <tr class="cursor-pointer">
+                        <td>@Model.ListDuesMemberOfGroup3[i].DuesMemberFirstName</td>
+                        <td>@Model.ListDuesMemberOfGroup3[i].DuesMemberLastName</td>
+                        <td>@Model.ListDuesMemberOfGroup3[i].MailingAddress</td>
+                        <td>@Model.ListDuesMemberOfGroup3[i].DuesMemberEmailAddress</td>
+                        <td>@Model.ListDuesMemberOfGroup3[i].Age</td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+  </div>
+</div >

@@ -6,20 +6,13 @@
 }
 <script src="~/Scripts/jqury-3.2.1.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
-
-
 <h2>Welcome To HomePage</h2>
-@using (Html.BeginForm("ReportGenerate", "Home"))
-{
-    <div>
-        <div>
+@using (Html.BeginForm("ReportGenerate", "Home", FormMethod.Post))
+{      <div>
             <button type="button" class="btn btn-default" id="AgeInputBtn">Get Report Based On Group </button>
             <button type="button" class="btn btn-default" id="StatesBtn">Get Report Based On Multiple State</button>
             <button type="button" class="btn btn-default" id="CombinationBtn">Get Report Based On Both</button>
         </div>
-    </div>
-
     @section Scripts{
         @Scripts.Render("~/bundles/jqueryval")
         <script type="text/javascript">
@@ -50,10 +43,8 @@
                     });
         </script>
         }
-    <br/>
-    <br/>
-   
     <div id="AgeGroup" style="display:none;">
+        <br />
         <table>
             <tbody>
                 <tr>
@@ -78,19 +69,16 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <br/>
-    <br/>
+    </div> 
     <div id="MultipleState" style="display:none;">
-        <div>@Html.LabelFor(model => model.ListOfStatesToShow) &nbsp; @Html.DropDownListFor(model => model.selectedSingleState, new SelectList(Model.ListOfStatesToShow), new { @class = "form-control selectpicker" })</div>
+        <br />
+        <div>@Html.LabelFor(model => model.ListOfStatesToShow)</div> 
+        <div> @Html.ListBoxFor(model => model.ListOfSelectedStates, new SelectList(Model.ListOfStatesToShow), new { data_placeholder = "Choose a State...", @class = "dropdown",id="listBoxState" })</div>
     </div>
-
-    
-    <br />
-    <br />
-    <br />
     <div id="submitBtn" style="display:none;">
-        <button type="button" name="Action" value="GenerateReport" class="btn btn-default" id="generateReport" onclick="window.location = ('@Url.Action("","")')">Generate Report</button>
-        <button type="button" name="Action" value="Clear" class="btn btn-default" id="generateReport" onclick="window.location = ('@Url.Action("","")')">Clear</button>
+        <br />
+        <button type="submit" name="Action" value="GenerateReport" class="btn btn-default" id="generateReport">Generate Report</button>
+        <button type="submit" name="Action" value="Reset" class="btn btn-default" id="generateReport">Reset</button>
+
     </div>
 }

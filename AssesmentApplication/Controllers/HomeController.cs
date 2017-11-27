@@ -29,42 +29,58 @@ namespace AssesmentApplication.Controllers
 
             return View();
         }
+
+
+
         [HttpGet]
         public ActionResult MainAction()
         {
+            Session.Clear();
+            ModelState.Clear();
             DuesMemberEntityManager mgr = new DuesMemberEntityManager();
             ReportViewModel model = mgr.getModelToShowOnHomePage();
             return View(model);
         }
-        [HttpPost]
-        public ActionResult MainAction(ReportViewModel model, string action)
-        {
-            DuesMemberEntityManager mgr = new DuesMemberEntityManager();
-            mgr.getModelToShowOnHomePage();
-            
-
-
-            return View();
-        }
-
+       
         [HttpGet]
-        public ActionResult ReportGenerate(ReportViewModel model)
+        public ActionResult ReportGenerate()
         {
-            return View(model);
+            ReportViewModel mdl = (ReportViewModel)TempData["InputDataModel"];
+            DuesMemberEntityManager mgr = new DuesMemberEntityManager();
+            ReportViewModel modelView = new ReportViewModel();
+            if (!(mdl.AgeGroup1[1].Equals("") || mdl.AgeGroup2[1].Equals("") || mdl.AgeGroup3[1].Equals("")) && !(mdl.ListOfSelectedStates ==null))
+            {
+                modelView = mgr.getModelToShowReportAsPerAgeGroupAndSelectedStates(mdl);
+            }
+            else if (! (mdl.ListOfSelectedStates == null))
+            {
+                modelView = mgr.getModelToShowReportAsPerSelectedStates(mdl);
+            }
+            else if ( !(mdl.AgeGroup1[1].Equals("") || mdl.AgeGroup2[1].Equals("") || mdl.AgeGroup3[1].Equals("")))
+            {
+                modelView = mgr.getModelToShowReportAsPerAgeGroup(mdl);
+            }
+                return View(modelView);
         }
 
         [HttpPost]
         public ActionResult ReportGenerate(ReportViewModel model, string action)
         {
+            ReportViewModel mdl = new ReportViewModel();
+            mdl.AgeGroup1 = model.AgeGroup1;
+            mdl.AgeGroup2 = model.AgeGroup2;
+            mdl.AgeGroup3 = model.AgeGroup3;
+            mdl.ListOfSelectedStates = model.ListOfSelectedStates;
+
+            TempData["InputDataModel"] = mdl;
+
             switch (action)
             {
                 case "GenerateReport":
                     return RedirectToAction("ReportGenerate", "Home");
-
-                case "Clear":
-                    break;
-
-
+                case "Reset":
+                 
+                    return RedirectToAction("MainAction","Home");
             }
             return View(model);
         }

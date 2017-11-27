@@ -388,7 +388,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\MainPage.cshtml" />
     <Content Include="Views\Home\ReportGenerate.cshtml" />
     <Content Include="Views\Home\MainAction.cshtml" />
   </ItemGroup>
